@@ -3,7 +3,6 @@ using CommunicationPlatform.Services.Interfaces;
 using CommunicationPlatform.Services.Services;
 using FluentAssertions;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using Xunit;
 
 namespace UnitTests.Services;
@@ -23,14 +22,14 @@ public class EmailBuilderTests
     public async Task BuildEmail_WhenPlaceholdersProvided_ReturnsProductionStringHehe()
     {
         const string template = "Hello, {{name}}";
-        var placeholderValues = new Dictionary<string, string> {{"name","John"}};
+        var placeholderValues = new Dictionary<string, string> { { "name", "John" } };
 
         var actual = await _builder.BuildEmailContentAsync(template, placeholderValues);
 
         _placeholderValidator.Received(1).ValidatePlaceholders(template, placeholderValues);
         actual.Should().Be("Hello, John");
     }
-    
+
     [Fact]
     public async Task BuildEmail_WhenValidatorThrowsException_RethrowsException()
     {

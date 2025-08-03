@@ -1,5 +1,3 @@
-using CommunicationPlatform.Shared;
-
 namespace CommunicationPlatform.Services.Services;
 
 public interface IEmailBuilder

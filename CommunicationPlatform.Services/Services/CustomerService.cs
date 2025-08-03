@@ -14,7 +14,7 @@ internal class CustomerService(ICustomerRepository customerRepository)
 
     public async Task<int> AddCustomerAsync(CustomerEntity customer, CancellationToken cancellationToken = default)
     {
-       return await customerRepository.AddCustomerAsync(customer);
+        return await customerRepository.AddCustomerAsync(customer);
     }
 
     public async Task UpdateCustomerAsync(CustomerEntity customer, CancellationToken cancellationToken = default)

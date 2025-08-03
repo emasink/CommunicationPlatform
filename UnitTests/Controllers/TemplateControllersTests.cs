@@ -12,9 +12,11 @@ namespace UnitTests;
 
 public class TemplateControllerTests
 {
-    private readonly ITemplateService _templateService = Substitute.For<ITemplateService>();
-    private readonly TemplateController _controller;
     private readonly TemplateEntity _template = new();
+
+    private readonly ITemplateService _templateService = Substitute.For<ITemplateService>();
+    
+    private readonly TemplateController _controller;
 
     public TemplateControllerTests()
     {
@@ -24,7 +26,7 @@ public class TemplateControllerTests
     [Fact]
     public async Task GetTemplateById_WhenTemplateExists_ReturnsTemplate()
     {
-        var template = new TemplateEntity { Id = 1};
+        var template = new TemplateEntity { Id = 1 };
         _templateService.GetByIdAsync(1).Returns(template);
 
         var actual = await _controller.GetTemplateById(1);
@@ -64,7 +66,7 @@ public class TemplateControllerTests
         var actual = await _controller.CreateTemplate(request);
 
         actual.Should().BeOfType<OkResult>();
-        await _templateService.Received(1).AddTemplate(Arg.Is<TemplateEntity>(x=> 
+        await _templateService.Received(1).AddTemplate(Arg.Is<TemplateEntity>(x =>
             x.Name == request.Name &&
             x.Subject == request.Subject));
     }

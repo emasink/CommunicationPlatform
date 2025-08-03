@@ -1,4 +1,3 @@
-using System.Data;
 using CommunicationPlatform.Core.Interfaces;
 using CommunicationPlatform.Persistence.Extensions;
 using CommunicationPlatform.Persistence.Interfaces;
@@ -7,8 +6,10 @@ using CommunicationPlatform.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunicationPlatform.Persistence.Repositories;
-public class CustomerRepository(DatabaseContext context,
-    ICustomerMapper customerMapper) 
+
+public class CustomerRepository(
+    DatabaseContext context,
+    ICustomerMapper customerMapper)
     : ICustomerRepository
 {
     public async Task<List<CustomerEntity>> GetCustomersAsync()
@@ -19,12 +20,13 @@ public class CustomerRepository(DatabaseContext context,
             .Select(x => new CustomerEntity { Id = x.Id, Email = x.Email, Name = x.Name })
             .ToList();
     }
+
     public async Task<int> AddCustomerAsync(CustomerEntity customer)
     {
         var entity = customerMapper.Map(customer);
         var addedEntity = context.Customers.Add(entity);
         await context.SaveChangesAsync();
-        
+
         return addedEntity.Entity.Id;
     }
 
@@ -37,7 +39,7 @@ public class CustomerRepository(DatabaseContext context,
 
     public async Task<CustomerEntity?> UpdateCustomerAsync(CustomerEntity customer)
     {
-        var entity = customerMapper.Map(customer);          
+        var entity = customerMapper.Map(customer);
         var updatedCustomer = context.Customers.Update(entity).Entity.ToDto();
         await context.SaveChangesAsync();
 

@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using CommunicationPlatform.Core.Exceptions;
-using CommunicationPlatform.Persistence.Mappers;
 using CommunicationPlatform.Persistence.Services;
 using FluentAssertions;
 using Microsoft.Extensions.Configuration;
@@ -42,8 +40,4 @@ public class ConfigurationServiceTests
 
         return new ConfigurationService(configuration);
     }
-    
-    
-    private readonly CustomerMapper _mapper = new CustomerMapper();
-    
 }

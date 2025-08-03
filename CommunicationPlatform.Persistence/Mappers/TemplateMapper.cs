@@ -4,7 +4,7 @@ using CommunicationPlatform.Shared;
 
 namespace CommunicationPlatform.Persistence.Mappers;
 
-public class TemplateMapper(IBodyMapper bodyMapper) 
+public class TemplateMapper(IBodyMapper bodyMapper)
     : ITemplateMapper
 {
     public TemplateModel Map(TemplateEntity entity)

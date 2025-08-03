@@ -1,5 +1,4 @@
 using AutoFixture.Xunit2;
-using CommunicationPlatform.Persistence.Entities;
 using CommunicationPlatform.Persistence.Mappers;
 using CommunicationPlatform.Persistence.Models;
 using CommunicationPlatform.Shared;
@@ -10,9 +9,10 @@ namespace UnitTests.Mappers;
 
 public class BodyMapperTests
 {
-    private readonly BodyMapper _mapper = new BodyMapper();
+    private readonly BodyMapper _mapper = new();
 
-    [Theory, AutoData]
+    [Theory]
+    [AutoData]
     public void Map_WhenValidDto_ReturnsBody(BodyDto dto)
     {
         var expected = new BodyModel

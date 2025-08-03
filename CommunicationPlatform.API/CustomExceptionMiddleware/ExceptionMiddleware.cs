@@ -1,4 +1,3 @@
-using CommunicationPlatform.API.Requests;
 using CommunicationPlatform.Services.Exceptions;
 using Microsoft.EntityFrameworkCore;
 
@@ -41,7 +40,7 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
             default:
                 statusCode = 500;
                 message = "Internal server error";
-                break; 
+                break;
         }
 
         httpContext.Response.ContentType = "application/json";

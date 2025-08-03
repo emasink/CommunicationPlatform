@@ -13,7 +13,7 @@ namespace UnitTests.Mappers;
 public class TemplateMapperTests
 {
     private readonly IBodyMapper _bodyMapepr = Substitute.For<IBodyMapper>();
-    
+
     private readonly TemplateMapper _mapper;
 
     public TemplateMapperTests()
@@ -21,12 +21,13 @@ public class TemplateMapperTests
         _mapper = new TemplateMapper(_bodyMapepr);
     }
 
-    [Theory, AutoData]
+    [Theory]
+    [AutoData]
     public void Map_WhenValidDto_ReturnsTemplate(TemplateEntity entity)
     {
         var body = new BodyModel();
         _bodyMapepr.Map(entity.Body).Returns(body);
-        
+
         var expected = new TemplateModel
         {
             Id = entity.Id,
@@ -38,5 +39,5 @@ public class TemplateMapperTests
         var actual = _mapper.Map(entity);
 
         actual.Should().BeEquivalentTo(expected);
-    }    
+    }
 }

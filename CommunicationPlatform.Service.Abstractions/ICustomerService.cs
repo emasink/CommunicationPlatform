@@ -9,8 +9,4 @@ public interface ICustomerService
     Task UpdateCustomerAsync(CustomerEntity customer, CancellationToken cancellationToken = default);
     Task DeleteCustomerAsync(int id, CancellationToken cancellationToken = default);
     Task<CustomerEntity?> GetByIdAsync(int id, CancellationToken cancellationToken = default);
-
 }
-
-
-

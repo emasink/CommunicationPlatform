@@ -4,7 +4,6 @@ using CommunicationPlatform.Persistence.Mappers;
 using CommunicationPlatform.Persistence.Repositories;
 using CommunicationPlatform.Persistence.Services;
 using CommunicationPlatform.Repository;
-using CommunicationPlatform.Shared;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CommunicationPlatform.Persistence;

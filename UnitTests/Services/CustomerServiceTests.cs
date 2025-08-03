@@ -28,7 +28,7 @@ public class CustomerServiceTests
 
         actual.Should().BeEquivalentTo(expected);
     }
-    
+
     [Fact]
     public async Task GetCustomerById_WhenFound_ReturnCustomer()
     {
@@ -65,12 +65,12 @@ public class CustomerServiceTests
 
         await _customerRepository.Received(1).UpdateCustomerAsync(customerDto);
     }
-    
+
     [Fact]
     public async Task DeleteCustomer_WhenCalledWithValidId_CallsRepositoryRemoveMethod()
     {
         const int customerId = 2;
-        
+
         await _service.DeleteCustomerAsync(customerId);
 
         await _customerRepository.Received(1).DeleteCustomerAsync(customerId);

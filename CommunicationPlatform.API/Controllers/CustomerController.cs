@@ -19,7 +19,7 @@ public class CustomerController(ICustomerService customerService) : Controller
             NotFound("CustomerModel is not present in the database. ") : 
             Ok(customer);
     }
-    
+
     [HttpGet]
     [Route("customers")]
     public async Task<IActionResult> GetCustomers()
@@ -38,12 +38,12 @@ public class CustomerController(ICustomerService customerService) : Controller
             Name = request.Name,
             Email = request.Email
         };
-        
+
         await customerService.AddCustomerAsync(customerEntity);
-        
+
         return Ok();
     }
-    
+
     [HttpPost]
     [Route("updateCustomer")]
     public async Task<IActionResult> UpdateCustomer([FromBody] CustomerEntity customer)
@@ -51,13 +51,13 @@ public class CustomerController(ICustomerService customerService) : Controller
         await customerService.UpdateCustomerAsync(customer);
         return Ok();
     }
-    
+
     [HttpDelete]
     [Route("deleteCustomer")]
     public async Task<IActionResult> DeleteCustomer([FromBody] int customerId)
     {
         await customerService.DeleteCustomerAsync(customerId);
-        
+
         return Ok();
     }
 }

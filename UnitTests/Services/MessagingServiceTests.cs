@@ -9,12 +9,12 @@ namespace UnitTests.Services;
 
 public class MessagingServiceTests
 {
-    private  readonly ICustomerRepository _customerRepository = Substitute.For<ICustomerRepository>();
-    private readonly ITemplateRepository _templateRepository = Substitute.For<ITemplateRepository>();
+    private readonly ICustomerRepository _customerRepository = Substitute.For<ICustomerRepository>();
     private readonly IEmailBuilder _emailBuilder = Substitute.For<IEmailBuilder>();
     private readonly IEmailSender _emailSender = Substitute.For<IEmailSender>();
-    
+
     private readonly MessagingService _service;
+    private readonly ITemplateRepository _templateRepository = Substitute.For<ITemplateRepository>();
 
     public MessagingServiceTests()
     {
@@ -28,7 +28,7 @@ public class MessagingServiceTests
         const int customerId = 5;
         const string emailBody = "content";
         var customerEntity = new CustomerEntity();
-        var template = new TemplateEntity(){Body = new()};
+        var template = new TemplateEntity { Body = new BodyDto() };
         var placeholderValues = new Dictionary<string, string>();
         _customerRepository.GetCustomerByIdAsync(customerId).Returns(customerEntity);
         _templateRepository.GetTemplateByIdAsync(templateId).Returns(template);
@@ -38,9 +38,9 @@ public class MessagingServiceTests
 
         _emailSender
             .Received(1)
-            .SendEmailAsync(Arg.Is<EmailMessage>(m => 
-                m.EmailAddress == customerEntity.Email && 
-                m.EmailSubject == template.Subject && 
+            .SendEmailAsync(Arg.Is<EmailMessage>(m =>
+                m.EmailAddress == customerEntity.Email &&
+                m.EmailSubject == template.Subject &&
                 m.EmailBody == emailBody));
     }
 }

@@ -1,4 +1,3 @@
-using CommunicationPlatform.Persistence.Entities;
 using CommunicationPlatform.Persistence.Interfaces;
 using CommunicationPlatform.Persistence.Models;
 using CommunicationPlatform.Shared;

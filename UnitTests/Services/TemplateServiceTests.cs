@@ -10,6 +10,7 @@ namespace UnitTests.Services;
 public class TemplateServiceTests
 {
     private readonly ITemplateRepository _templateRepository = Substitute.For<ITemplateRepository>();
+    
     private readonly TemplateService _service;
 
     public TemplateServiceTests()

@@ -1,7 +1,6 @@
 using System.Text.RegularExpressions;
 using CommunicationPlatform.Services.Exceptions;
 using CommunicationPlatform.Services.Interfaces;
-using CommunicationPlatform.Services.Services;
 
 namespace CommunicationPlatform.Services.Validators;
 

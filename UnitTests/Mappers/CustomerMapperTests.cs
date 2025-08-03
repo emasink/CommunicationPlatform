@@ -9,8 +9,10 @@ namespace UnitTests.Mappers;
 
 public class CustomerMapperTests
 {
-    private readonly CustomerMapper _mapper = new CustomerMapper();
-    [Theory, AutoData]
+    private readonly CustomerMapper _mapper = new();
+
+    [Theory]
+    [AutoData]
     public void Map_WhenNotNull_ReturnsCustomer(CustomerEntity entity)
     {
         entity.Should().NotBeNull("AutoFixture should generate a valid DTO");

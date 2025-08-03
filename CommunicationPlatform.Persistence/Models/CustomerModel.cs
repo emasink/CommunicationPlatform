@@ -1,5 +1,3 @@
-using CommunicationPlatform.Shared;
-
 namespace CommunicationPlatform.Persistence.Entities;
 
 public class CustomerModel

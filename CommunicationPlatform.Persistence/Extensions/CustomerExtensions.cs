@@ -11,7 +11,7 @@ public static class CustomerExtensions
         dto.Id = customerModel.Id;
         dto.Name = customerModel.Name;
         dto.Email = customerModel.Email;
-        
+
         return dto;
     }
 }

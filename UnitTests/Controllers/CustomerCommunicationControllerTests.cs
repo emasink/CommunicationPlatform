@@ -2,7 +2,6 @@ using CommunicationPlatform.API.Controllers;
 using CommunicationPlatform.API.Requests;
 using CommunicationPlatform.ServiceAbstractions;
 using FluentAssertions;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using NSubstitute;
@@ -26,7 +25,7 @@ public class CustomerCommunicationControllerTests
     public async Task SendMessage_WhenSuccess_ReturnsOk()
     {
         var request = new SendEmailRequest();
-        
+
         var actual = await _controller.SendEmailAsync(request);
 
         actual.Should().BeOfType<OkResult>();

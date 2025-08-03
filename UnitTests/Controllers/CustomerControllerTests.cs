@@ -5,16 +5,17 @@ using CommunicationPlatform.Shared;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using Xunit;
 
 namespace UnitTests;
 
 public class CustomerControllerTests
 {
-    private readonly ICustomerService _customerService = Substitute.For<ICustomerService>();
-    private readonly CustomerController _controller;
     private readonly CustomerEntity _customer = new();
+    
+    private readonly ICustomerService _customerService = Substitute.For<ICustomerService>();
+    
+    private readonly CustomerController _controller;
 
     public CustomerControllerTests()
     {
@@ -66,7 +67,7 @@ public class CustomerControllerTests
         actual.Should().BeOfType<OkResult>();
         await _customerService
             .Received(1)
-            .AddCustomerAsync(Arg.Is<CustomerEntity>(x => 
+            .AddCustomerAsync(Arg.Is<CustomerEntity>(x =>
                 x.Name == request.Name &&
                 x.Email == request.Email));
     }

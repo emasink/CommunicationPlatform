@@ -1,4 +1,3 @@
-using CommunicationPlatform.API.CustomExceptionMiddleware;
 using CommunicationPlatform.API.Extensions;
 using CommunicationPlatform.Persistence;
 using CommunicationPlatform.Services;

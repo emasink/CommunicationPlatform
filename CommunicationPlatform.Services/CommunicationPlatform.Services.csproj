@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotLiquid" Version="2.3.197" />
+        <PackageReference Include="DotLiquid" Version="2.3.197"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.7"/>
     </ItemGroup>
 

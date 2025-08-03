@@ -7,9 +7,11 @@ using CommunicationPlatform.Shared;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunicationPlatform.Persistence.Repositories;
-public class TemplateRepository(DatabaseContext context,
+
+public class TemplateRepository(
+    DatabaseContext context,
     ITemplateMapper templateMapper,
-    IBodyMapper bodyMapper) 
+    IBodyMapper bodyMapper)
     : ITemplateRepository
 {
     public async Task<List<TemplateEntity>> GetTemplatesAsync()
@@ -44,13 +46,13 @@ public class TemplateRepository(DatabaseContext context,
 
     public async Task<TemplateEntity> UpdateTemplateAsync(TemplateEntity templateEntity)
     {
-        var templateModel = templateMapper.Map(templateEntity);          
+        var templateModel = templateMapper.Map(templateEntity);
         var updatedTemplate = context.Templates.Update(templateModel).Entity.ToDto();
         await context.SaveChangesAsync();
 
         return updatedTemplate;
     }
-    
+
     public async Task<TemplateEntity?> GetTemplateByIdAsync(int id)
     {
         var template = await context.Templates
@@ -58,5 +60,4 @@ public class TemplateRepository(DatabaseContext context,
             .FirstOrDefaultAsync(x => x.Id == id);
         return template?.ToDto();
     }
-
 }

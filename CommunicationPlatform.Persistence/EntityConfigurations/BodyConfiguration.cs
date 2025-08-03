@@ -1,5 +1,3 @@
-using System.Text.Json;
-using CommunicationPlatform.Persistence.Entities;
 using CommunicationPlatform.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
