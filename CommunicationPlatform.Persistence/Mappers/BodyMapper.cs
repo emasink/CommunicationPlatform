@@ -6,11 +6,11 @@ namespace CommunicationPlatform.Persistence.Mappers;
 
 public class BodyMapper : IBodyMapper
 {
-    public BodyModel Map(BodyDto dto)
+    public BodyModel Map(BodyEntity entity)
     {
         var body = new BodyModel();
-        body.Id = dto.Id;
-        body.Text = dto.Text;
+        body.Id = entity.Id;
+        body.Text = entity.Text;
 
         return body;
     }

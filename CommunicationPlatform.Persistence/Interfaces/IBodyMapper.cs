@@ -5,5 +5,5 @@ namespace CommunicationPlatform.Persistence.Interfaces;
 
 public interface IBodyMapper
 {
-    BodyModel Map(BodyDto dto);
+    BodyModel Map(BodyEntity entity);
 }

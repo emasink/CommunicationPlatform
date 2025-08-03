@@ -28,7 +28,7 @@ public class MessagingServiceTests
         const int customerId = 5;
         const string emailBody = "content";
         var customerEntity = new CustomerEntity();
-        var template = new TemplateEntity { Body = new BodyDto() };
+        var template = new TemplateEntity { Body = new BodyEntity() };
         var placeholderValues = new Dictionary<string, string>();
         _customerRepository.GetCustomerByIdAsync(customerId).Returns(customerEntity);
         _templateRepository.GetTemplateByIdAsync(templateId).Returns(template);

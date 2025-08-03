@@ -5,9 +5,9 @@ namespace CommunicationPlatform.Persistence.Extensions;
 
 public static class BodyExtensions
 {
-    public static BodyDto ToDto(this BodyModel bodyModel)
+    public static BodyEntity ToDto(this BodyModel bodyModel)
     {
-        var bodyDto = new BodyDto();
+        var bodyDto = new BodyEntity();
         bodyDto.Id = bodyModel.Id;
         bodyDto.Text = bodyModel.Text;
 

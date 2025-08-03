@@ -13,15 +13,15 @@ public class BodyMapperTests
 
     [Theory]
     [AutoData]
-    public void Map_WhenValidDto_ReturnsBody(BodyDto dto)
+    public void Map_WhenValidDto_ReturnsBody(BodyEntity entity)
     {
         var expected = new BodyModel
         {
-            Id = dto.Id,
-            Text = dto.Text
+            Id = entity.Id,
+            Text = entity.Text
         };
 
-        var actual = _mapper.Map(dto);
+        var actual = _mapper.Map(entity);
 
         actual.Should().BeEquivalentTo(expected);
     }

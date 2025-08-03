@@ -10,7 +10,7 @@ namespace CommunicationPlatform.API.Controllers;
 public class TemplateController(ITemplateService templateService) : Controller
 {
     [HttpGet]
-    [Route("template/{id:int}")]
+    [Route("{id:int}")]
     public async Task<IActionResult> GetTemplateById(int id)
     {
         var template = await templateService.GetByIdAsync(id);
@@ -21,7 +21,7 @@ public class TemplateController(ITemplateService templateService) : Controller
     }
 
     [HttpGet]
-    [Route("templates")]
+    [Route("all")]
     public async Task<IActionResult> GetTemplates()
     {
         var templates = await templateService.GetAllAsync();
@@ -30,14 +30,14 @@ public class TemplateController(ITemplateService templateService) : Controller
     }
 
     [HttpPost]
-    [Route("createTemplate")]
+    [Route("create")]
     public async Task<IActionResult> CreateTemplate([FromBody] CreateTemplateRequest request)
     {
         var template = new TemplateEntity
         {
             Name = request.Name,
             Subject = request.Subject,
-            Body = request.Body
+            Body = new BodyEntity(){Text = request.Body}
         };
         await templateService.AddTemplate(template);
 
@@ -45,7 +45,7 @@ public class TemplateController(ITemplateService templateService) : Controller
     }
 
     [HttpPost]
-    [Route("updateTemplate")]
+    [Route("update")]
     public async Task<IActionResult> UpdateTemplate([FromBody] TemplateEntity template)
     {
         await templateService.UpdateTemplateAsync(template);
@@ -53,10 +53,10 @@ public class TemplateController(ITemplateService templateService) : Controller
     }
 
     [HttpDelete]
-    [Route("deleteTemplate")]
-    public async Task<IActionResult> DeleteTemplate([FromBody] int templateId)
+    [Route("delete/{id:int}")]
+    public async Task<IActionResult> DeleteTemplate(int id)
     {
-        await templateService.DeleteTemplate(templateId);
+        await templateService.DeleteTemplate(id);
 
         return Ok();
     }

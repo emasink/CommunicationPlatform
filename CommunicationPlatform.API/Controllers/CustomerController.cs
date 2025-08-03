@@ -21,7 +21,7 @@ public class CustomerController(ICustomerService customerService) : Controller
     }
 
     [HttpGet]
-    [Route("customers")]
+    [Route("all")]
     public async Task<IActionResult> GetCustomers()
     {
         var customers = await customerService.GetAllAsync();
@@ -30,7 +30,7 @@ public class CustomerController(ICustomerService customerService) : Controller
     }
 
     [HttpPost]
-    [Route("createCustomer")]
+    [Route("create")]
     public async Task<IActionResult> CreateCustomer([FromBody] CreateCustomerRequest request)
     {
         var customerEntity = new CustomerEntity
@@ -45,7 +45,7 @@ public class CustomerController(ICustomerService customerService) : Controller
     }
 
     [HttpPost]
-    [Route("updateCustomer")]
+    [Route("update")]
     public async Task<IActionResult> UpdateCustomer([FromBody] CustomerEntity customer)
     {
         await customerService.UpdateCustomerAsync(customer);
@@ -53,10 +53,10 @@ public class CustomerController(ICustomerService customerService) : Controller
     }
 
     [HttpDelete]
-    [Route("deleteCustomer")]
-    public async Task<IActionResult> DeleteCustomer([FromBody] int customerId)
+    [Route("delete/{id:int}")]
+    public async Task<IActionResult> DeleteCustomer( int id)
     {
-        await customerService.DeleteCustomerAsync(customerId);
+        await customerService.DeleteCustomerAsync(id);
 
         return Ok();
     }

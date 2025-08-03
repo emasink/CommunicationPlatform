@@ -6,5 +6,5 @@ public class CreateTemplateRequest
 {
     public string Name { get; set; }
     public string Subject { get; set; }
-    public BodyDto Body { get; set; }
+    public string Body { get; set; }
 }
