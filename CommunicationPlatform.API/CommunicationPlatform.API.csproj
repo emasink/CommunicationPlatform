@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.7" />
+        <PackageReference Include="Microsoft.IdentityModel.Logging" Version="8.13.0" />
+        <PackageReference Include="NLog" Version="6.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CommunicationPlatform.Persistence\CommunicationPlatform.Persistence.csproj"/>
+        <ProjectReference Include="..\CommunicationPlatform.Service.Abstractions\CommunicationPlatform.Service.Abstractions.csproj"/>
+        <ProjectReference Include="..\CommunicationPlatform.Services\CommunicationPlatform.Services.csproj"/>
+    </ItemGroup>
+
+</Project>
