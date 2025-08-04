@@ -81,7 +81,7 @@ To get started with the Communication Platform API, follow these steps:
     -v <LocalPath>:/var/opt/mssql/backups \
     -d mcr.microsoft.com/mssql/server:2022-latest
     ```
-3.  Run migrations:
+3.  Run migrations inside API project `CommunicationPlatform.API`:
       * `dotnet ef migrations add InitialCreate`
       * `dotnet ef database update`
 4.  Start the API application by running `dotnet run` in the CommunicationPlatform.API  directory of the project.
